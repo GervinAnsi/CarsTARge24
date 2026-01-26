@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Cars.ApplicationServices\Cars.ApplicationServices.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceInterface\" />
+  </ItemGroup>
+
 </Project>
