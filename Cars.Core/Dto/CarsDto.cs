@@ -14,6 +14,7 @@ namespace Cars.Core.Dto
         public string? FuelType { get; set; }
         public int? Power { get; set; }
         public string? Drivetrain { get; set; }
+        public string? Info { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }

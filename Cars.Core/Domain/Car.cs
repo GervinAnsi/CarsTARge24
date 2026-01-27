@@ -14,6 +14,7 @@ namespace Cars.Core.Domain
         public string? FuelType { get; set; }
         public int? Power { get; set; }
         public string? Drivetrain { get; set; }
+        public string? Info { get; set; }
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get;set; }
     }
