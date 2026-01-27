@@ -1,3 +1,7 @@
+using Cars.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace CarsTARge24
 {
     public class Program
@@ -8,6 +12,12 @@ namespace CarsTARge24
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<CarsTARge24Context>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<CarsTARge24Context>();
 
             var app = builder.Build();
 
