@@ -11,34 +11,34 @@
 
     <div class="mb-3">
         <label asp-for="Brand" class="form-label"></label>
-        <input asp-for="Brand" class="form-control" />
+        <input asp-for="Brand" class="form-control" maxlength="50" />
     </div>
 
     <div class="mb-3">
         <label asp-for="Model" class="form-label"></label>
-        <input asp-for="Model" class="form-control" />
+        <input asp-for="Model" class="form-control" maxlength="50" />
     </div>
 
     <div class="mb-3">
         <label asp-for="FuelType" class="form-label"></label>
-        <input asp-for="FuelType" class="form-control" />
+        <input asp-for="FuelType" class="form-control" maxlength="50" />
     </div>
 
     <div class="mb-3">
         <label asp-for="Power" class="form-label"></label>
-        <input asp-for="Power" class="form-control" type="number" />
+        <input asp-for="Power" class="form-control" maxlength="5" type="number" />
     </div>
 
     <div class="mb-3">
         <label asp-for="Drivetrain" class="form-label"></label>
-        <input asp-for="Drivetrain" class="form-control" />
+        <input asp-for="Drivetrain" class="form-control" maxlength="50" />
     </div>
 
     <div class="mb-3">
         <label asp-for="Info" class="form-label"></label>
-        <textarea asp-for="Info" class="form-control"></textarea>
+        <textarea asp-for="Info" class="form-control" maxlength="200"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-outline-black">Save</button>
+    <a asp-action="Index" class="btn btn-outline-black">Cancel</a>
 </form>

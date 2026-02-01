@@ -29,3 +29,17 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.btn-outline-black {
+    color: black;
+    border: 1px solid #D1D1D1;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-black:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}

@@ -7,7 +7,7 @@
 <h1>Cars</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">
+    <a asp-action="Create" class="btn btn-outline-black">
         Add New Car
     </a>
 </p>
@@ -21,7 +21,7 @@
             <th>Power</th>
             <th>Drivetrain</th>
             <th>Info</th>
-            <th style="width: 180px;">Actions</th>
+            <th style="width: 210px;">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -37,15 +37,20 @@
                     <td>@car.Drivetrain</td>
                     <td>@car.Info</td>
                     <td>
+                        <a asp-action="Details"
+                           asp-route-id="@car.Id"
+                           class="btn btn-outline-black">
+                            View
+                        </a>
                         <a asp-action="Update"
                            asp-route-id="@car.Id"
-                           class="btn btn-sm btn-warning">
+                           class="btn btn-outline-black">
                             Edit
                         </a>
 
                         <a asp-action="Delete"
                            asp-route-id="@car.Id"
-                           class="btn btn-sm btn-danger">
+                           class="btn btn-outline-black">
                             Delete
                         </a>
                     </td>
