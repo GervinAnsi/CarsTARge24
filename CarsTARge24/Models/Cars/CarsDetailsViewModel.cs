@@ -1,0 +1,15 @@
+﻿namespace CarsTARge24.Models.Cars
+{
+    public class CarsDetailsViewModel
+    {
+        public Guid Id { get; set; }
+        public string? Brand { get; set; }
+        public string? Model { get; set; }
+        public string? FuelType { get; set; }
+        public int? Power { get; set; }
+        public string? Drivetrain { get; set; }
+        public string? Info { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
+}

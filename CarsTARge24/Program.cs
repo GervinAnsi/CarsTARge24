@@ -1,3 +1,5 @@
+using Cars.ApplicationServices.Services;
+using Cars.Core.ServiceInterface;
 using Cars.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,8 @@ namespace CarsTARge24
 
             builder.Services.AddDbContext<CarsTARge24Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<ICarServices, CarServices>();
 
             builder.Services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<CarsTARge24Context>();
