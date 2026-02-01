@@ -132,5 +132,27 @@ namespace CarsTARge24.Controllers
             await _carServices.Delete(id);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var cars = await _carServices.DetailAsync(id);
+            if (cars == null) return NotFound();
+
+            var vm = new CarsDeleteViewModel()
+            {
+                Id = cars.Id,
+                Brand = cars.Brand,
+                Model = cars.Model,
+                FuelType = cars.FuelType,
+                Power = cars.Power,
+                Drivetrain = cars.Drivetrain,
+                Info = cars.Info,
+                CreatedAt = cars.CreatedAt,
+                UpdatedAt = cars.UpdatedAt
+
+            };
+            return View(vm);
+        }
     }
 }
