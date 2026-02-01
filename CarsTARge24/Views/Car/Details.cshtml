@@ -1,0 +1,20 @@
+﻿@model CarsTARge24.Models.Cars.CarsDetailsViewModel
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+
+<h1>Car Details</h1>
+
+<table class="table table-bordered">
+    <tr><th>Brand</th><td>@Model.Brand</td></tr>
+    <tr><th>Model</th><td>@Model.Model</td></tr>
+    <tr><th>Fuel Type</th><td>@Model.FuelType</td></tr>
+    <tr><th>Power</th><td>@Model.Power</td></tr>
+    <tr><th>Drivetrain</th><td>@Model.Drivetrain</td></tr>
+    <tr><th>Info</th><td>@Model.Info</td></tr>
+    <tr><th>Created At</th><td>@Model.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td></tr>
+    <tr><th>Updated At</th><td>@Model.UpdatedAt?.ToString("yyyy-MM-dd HH:mm")</td></tr>
+</table>
+
+<a asp-action="Index" class="btn btn-outline-black">Back to List</a>

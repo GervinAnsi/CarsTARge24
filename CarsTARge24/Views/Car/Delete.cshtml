@@ -1,0 +1,24 @@
+﻿@model CarsTARge24.Models.Cars.CarsDeleteViewModel
+
+@{
+    ViewData["Title"] = "Delete Car";
+}
+
+<h1>Delete Car</h1>
+
+<p>Are you sure you want to delete this car?</p>
+
+<table class="table table-bordered">
+    <tr><th>Brand</th><td>@Model.Brand</td></tr>
+    <tr><th>Model</th><td>@Model.Model</td></tr>
+    <tr><th>Fuel Type</th><td>@Model.FuelType</td></tr>
+    <tr><th>Power</th><td>@Model.Power</td></tr>
+    <tr><th>Drivetrain</th><td>@Model.Drivetrain</td></tr>
+    <tr><th>Info</th><td>@Model.Info</td></tr>
+</table>
+
+<form asp-action="DeleteConfirmation" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-outline-black">Delete</button>
+    <a asp-action="Index" class="btn btn-outline-black">Cancel</a>
+</form>
