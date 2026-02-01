@@ -85,5 +85,52 @@ namespace CarsTARge24.Controllers
 
             return View("CreateUpdate", vm);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(CarsCreateUpdateViewModel vm)
+        {
+            var dto = new CarsDto()
+            {
+                Id = vm.Id,
+                Brand = vm.Brand,
+                Model = vm.Model,
+                FuelType = vm.FuelType,
+                Power = vm.Power,
+                Drivetrain = vm.Drivetrain,
+                Info = vm.Info,
+                CreatedAt = vm.CreatedAt,
+                UpdatedAt = vm.UpdatedAt
+            };
+
+            await _carServices.Update(dto);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var cars = await _carServices.DetailAsync(id);
+            if (cars == null) return NotFound();
+
+            var vm = new CarsDeleteViewModel
+            {
+                Id = cars.Id,
+                Brand = cars.Brand,
+                Model = cars.Model,
+                FuelType = cars.FuelType,
+                Power = cars.Power,
+                Drivetrain = cars.Drivetrain,
+                Info = cars.Info,
+                CreatedAt = cars.CreatedAt,
+                UpdatedAt = cars.UpdatedAt
+            };
+            return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            await _carServices.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
