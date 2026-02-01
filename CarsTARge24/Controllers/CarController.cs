@@ -20,22 +20,22 @@ namespace CarsTARge24.Controllers
             _carServices = carServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var result = _context.Cars
-                .Select(x => new CarsIndexViewModel()
-                {
-                    Id = x.Id,
-                    Brand = x.Brand,
-                    Model = x.Model,
-                    FuelType = x.FuelType,
-                    Power = x.Power,
-                    Drivetrain = x.Drivetrain,
-                    Info = x.Info,
+            var cars = await _carServices.GetAllAsync();
 
-                });
-            
-            return View();
+            var result = cars.Select(x => new CarsIndexViewModel
+            {
+                Id = x.Id,
+                Brand = x.Brand,
+                Model = x.Model,
+                FuelType = x.FuelType,
+                Power = x.Power,
+                Drivetrain = x.Drivetrain,
+                Info = x.Info
+            }).ToList();
+
+            return View(result);
         }
 
         [HttpGet]
@@ -139,7 +139,7 @@ namespace CarsTARge24.Controllers
             var cars = await _carServices.DetailAsync(id);
             if (cars == null) return NotFound();
 
-            var vm = new CarsDeleteViewModel()
+            var vm = new CarsDetailsViewModel()
             {
                 Id = cars.Id,
                 Brand = cars.Brand,

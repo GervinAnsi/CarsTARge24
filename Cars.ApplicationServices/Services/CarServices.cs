@@ -81,5 +81,10 @@ namespace Cars.ApplicationServices.Services
 
             return domain;
         }
+
+        public async Task<List<Car>> GetAllAsync()
+        {
+            return await _context.Cars.ToListAsync();
+        }
     }
 }
