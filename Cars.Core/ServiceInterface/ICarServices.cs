@@ -12,5 +12,6 @@ namespace Cars.Core.ServiceInterface
     {
         Task<Car> Create(CarsDto dto);
         Task<Car> Update(CarsDto dto);
+        Task<Car> DetailAsync(CarsDto dto);
     }
 }
