@@ -12,11 +12,13 @@ namespace CarsTARge24
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+
             builder.Services.AddControllersWithViews();
 
+
+            var connectionString = builder.Configuration.GetConnectionString("CarsTARge24Connection");
             builder.Services.AddDbContext<CarsTARge24Context>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(connectionString));
 
             builder.Services.AddScoped<ICarServices, CarServices>();
 
@@ -25,17 +27,34 @@ namespace CarsTARge24
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<CarsTARge24Context>();
+                try
+                {
+                    if (dbContext.Database.IsRelational())
+                    {
+                        dbContext.Database.Migrate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Database migration failed: " + ex);
+                }
+            }
+
+
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
